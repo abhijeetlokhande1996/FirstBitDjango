@@ -1,0 +1,52 @@
+{
+  "courses": ["C", "C++", "Java", "Python", "Angular", "Data Structure"],
+  "frameworks": ["Angular", "Django"],
+  "logoPath": "assets/images/logo.png",
+  "images": ["assets/images/2.jpg", "assets/images/3.jpg"],
+  "packageDescription": {
+    "gold": {
+      "C": {
+        "image": "",
+        "desc": "Sample Desc"
+      },
+      "C++": {
+        "image": "",
+        "desc": "Sample Desc"
+      },
+      "Java": {
+        "image": "",
+        "desc": "Sample Desc"
+      },
+      "Web Technology": {
+        "image": "",
+        "desc": "Sample Desc"
+      }
+    },
+    "platinium": {
+      "C": {
+        "image": "",
+        "desc": "Sample Desc"
+      },
+      "C++": {
+        "image": "",
+        "desc": "Sample Desc"
+      },
+      "Java": {
+        "image": "",
+        "desc": "Sample Desc"
+      },
+      "Web Technology": {
+        "image": "",
+        "desc": "Sample Desc"
+      },
+      "Python": {
+        "image": "",
+        "desc": "Sample Desc"
+      },
+      "Angular": {
+        "image": "",
+        "desc": "Sample Desc"
+      }
+    }
+  }
+}
