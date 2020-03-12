@@ -1024,3 +1024,39 @@ button {
 .margin_top_90 {
   margin-top: 90px;
 }
+.zoom {
+  padding: 50px;
+  
+  transition: transform .2s;
+
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.1); 
+}
+.items{
+  white-space: nowrap;
+  margin-bottom: 0;
+  overflow: hidden;
+}
+.item {
+  display: inline-block;
+  padding: 0;
+  float: none;
+}
+.img-responsive{
+  width: 100%;
+}
+.myImgClass{
+  height: 100px;
+  width: 250px;
+}
+#imgSlider {
+  background-color: #000;
+}
+.gMap {
+  position: relative; height: 100%; width: 100%;
+}

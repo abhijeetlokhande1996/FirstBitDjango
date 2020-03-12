@@ -1,52 +1,66 @@
 {
-  "courses": ["C", "C++", "Java", "Python", "Angular", "Data Structure"],
+  "courses": ["Gold","Platinium"],
   "frameworks": ["Angular", "Django"],
   "logoPath": "assets/images/logo.png",
   "images": ["assets/images/2.jpg", "assets/images/3.jpg"],
-  "packageDescription": {
-    "gold": {
-      "C": {
-        "image": "",
-        "desc": "Sample Desc"
-      },
-      "C++": {
-        "image": "",
-        "desc": "Sample Desc"
-      },
-      "Java": {
-        "image": "",
-        "desc": "Sample Desc"
-      },
-      "Web Technology": {
-        "image": "",
-        "desc": "Sample Desc"
+  "packageDesc":{
+    "Gold": [{
+      "name":"C",
+      "hours":"30"
+    },{
+      "name":"C++",
+      "hours":"30"
+    },{
+      "name":"Data Structure",
+      "hours":"40"
+    },{
+      "name":"Java(Core & Advance)",
+      "hours":"80"
+    },{
+      "name":"HTML5+Javascript",
+      "hours":"30"
+    },{
+      "name":"SQL",
+      "hours":"30"
+    },{
+      "name":"Aptitude",
+      "hours":"30"
+    }],
+    "Platinum": [
+      {
+        "name":"All Gold Package",
+        "hours":"270"
+      },{
+        "name":"Python",
+        "hours":"30"
+      },{
+        "name":"Angular",
+        "hours":"30"
+      }, {
+        "name":"Spring+Hibernate",
+        "hours":"30"
+      },{
+        "name":"Java 8",
+        "hours":"30"
       }
-    },
-    "platinium": {
-      "C": {
-        "image": "",
-        "desc": "Sample Desc"
-      },
-      "C++": {
-        "image": "",
-        "desc": "Sample Desc"
-      },
-      "Java": {
-        "image": "",
-        "desc": "Sample Desc"
-      },
-      "Web Technology": {
-        "image": "",
-        "desc": "Sample Desc"
-      },
-      "Python": {
-        "image": "",
-        "desc": "Sample Desc"
-      },
-      "Angular": {
-        "image": "",
-        "desc": "Sample Desc"
-      }
-    }
-  }
+    ]
+  },
+  "allCoursesImageUrl":["http://firstbitsolutions.com/assets/images/cours/c.png",
+    "http://firstbitsolutions.com/assets/images/cours/c++.png","http://firstbitsolutions.com/assets/images/cours/html5.png","http://firstbitsolutions.com/assets/images/cours/java8.png","http://firstbitsolutions.com/assets/images/cours/python.png","http://firstbitsolutions.com/assets/images/cours/spring.png","http://firstbitsolutions.com/assets/images/cours/hibernate.png","http://firstbitsolutions.com/assets/images/cours/sql.png",
+    "http://firstbitsolutions.com/assets/images/cours/angular.png"],
+  "testomonial":[{
+    "name":"Abhijeet Lokhande",
+    "image":"client-img.png",
+    "desc":" We appreciate you. Teachers don’t just teach children. They help prepare kids for the road ahead in life. Saying you appreciate that effort reminds a teacher that their impact goes beyond the classroom."
+  },{
+    "name":"Abhijeet Lokhande",
+    "image":"client-img.png",
+    "desc":" We appreciate you. Teachers don’t just teach children. They help prepare kids for the road ahead in life. Saying you appreciate that effort reminds a teacher that their impact goes beyond the classroom."
+  },{
+    "name":"Abhijeet Lokhande",
+    "image":"client-img.png",
+    "desc":" We appreciate you. Teachers don’t just teach children. They help prepare kids for the road ahead in life. Saying you appreciate that effort reminds a teacher that their impact goes beyond the classroom."
+  }],
+  "emailId":"info@firstbitsolutions.com",
+  "contactNumber":"+91 8600007707"
 }

@@ -15,7 +15,10 @@
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta name="author" content="" />
+    
+
     <!-- owl carousel style -->
+
     <link
       rel="stylesheet"
       type="text/css"
@@ -36,11 +39,7 @@
     <!-- Responsive-->
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}" />
     <!-- fevicon -->
-    <link
-      rel="icon"
-      href="{% static 'images/fevicon.png' %}"
-      type="image/gif"
-    />
+    <link rel="icon" href="{% static 'images/fevicon.ico'%}" type="image/gif" sizes="16x16">
     <!-- Scrollbar Custom CSS -->
     <link
       rel="stylesheet"
@@ -71,7 +70,22 @@
       .img-size{
         height: 300px;
       }
+      .items{
+            white-space: nowrap;
+            margin-bottom: 0;
+            overflow: hidden;
+        }
+        .item {
+            display: inline-block;
+            padding: 0;
+            float: none;
+        }
+        .img-responsive{
+            width: 100%;
+        }
+        h1 { margin:150px auto 30px auto; text-align:center; color:#fff;}
     </style>
+
   </head>
   <body>
     <!--header section start -->
@@ -256,34 +270,61 @@
           <span style="color: #fcce2d">Our</span> Courses
         </h1>
         <div class="services_section_2 mt-1">
-          {% for courseName in uiJsonData.courses %}
-            {% if forloop.counter0|divisibleby:"2" %}
-              <div class="row">
+         
+          <!-- Row Start -->
+              <div class="row text-center">
+                {% for packageName in packageNamesArr %}
                 <div class="col-md-6">
-                  <div class="image_main">
-                    <img class="img-size"
-                      style="width:100%" src="{% static 'images/'|addString:courseName|addString:'.png' %}" />
-                      <div class="text_main">
-                        <div class="seemore_text">{{courseName}}</div>
-                      </div>
-                  </div>
+                  <table class="table table-bordered zoom">
+                    <thead>
+                      <tr class="bg-dark text-white">
+                        <th colspan="2">{{packageName}}</th>
+                      </tr>
+                      <tr>
+                        <th>Name</th>
+                        <th>Hours</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in packages|testFilter:packageName %}
+                          {% if packageName|lower == 'gold' %}
+                            {% with item as itemG %}
+                              <tr>
+                                <td>{{itemG.name}}</td>
+                                <td>{{itemG.hours}}</td>
+                              </tr>
+                            {% endwith %}
+                             
+                            {% else %}
+                              {% with item as itemP %}
+                                {% if forloop.counter0 == 0 %}
+                                <tr rowspan="4">
+                                  <td>{{itemP.name}}</td>
+                                  <td>{{itemP.hours}}</td>
+                                </tr>
+                                {% endif %}
+                                {% if forloop.counter0 > 0 %}
+                                  <tr>
+                                    <td>{{itemP.name}}</td>
+                                    <td>{{itemP.hours}}</td>
+                                  </tr>
+                                {% endif %}
+                                
+                              {% endwith %}
+                          {% endif %}
 
+                        {% endfor %}
+                        <tr class="bg-secondary font-weight-bold text-white">
+                          <td>Total Hours</td>
+                          <td>{{packages|calculateFees:packageName}}</td>
+                        </tr>
+                    </tbody>
+                  </table>
                 </div>
-                <div class="col-md-6">
-                  <div class="image_main">
-                    {% with nextCourseName=uiJsonData.courses|indexFilter:forloop.counter %}
-                      <img class="img-size"
-                        style="width:100%" src="{% static 'images/'|addString:nextCourseName|addString:'.png'%}" />
-                        <div class="text_main">
-                          <div class="seemore_text">{{nextCourseName}}</div>
-                        </div>
-                    {% endwith %}
-                  </div>
-
-                </div>
+                {% endfor %}
               </div>
-            {% endif %} 
-          {% endfor %}
+              <!-- Row End -->
+          
 
         </div>
       </div>
@@ -294,21 +335,20 @@
       <div class="container">
         <h1 class="news_taital">Our About</h1>
         <p class="news_text">
-          Do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-          ad minim veniam
+          Future-focused: Building a Better Life
         </p>
         <div class="news_section_2">
           <div class="row">
             <div class="col-md-6">
               <div class="news_taital_box">
-                <p class="date_text">01 Jan 2020</p>
-                <h4 class="make_text">Make it Simple</h4>
+                <p class="date_text"></p>
+                <h4 class="make_text">Aim</h4>
                 <p class="lorem_text">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation
+                  FirstBit Solutions is an IT Training Organization Committed to Deploy Effectual and Efficient Technical Skills to the Fresh Talent so as to translate them into Proficient Resources for the Industry.
+
+
                 </p>
-                <p class="post_text">Post By : Casinal</p>
+                <p class="post_text">Post By : First Bit Solutions</p>
               </div>
             </div>
             <div class="col-md-6">
@@ -325,7 +365,7 @@
     </div>
     <!-- about section end -->
     <!-- blog section start -->
-    <div class="blog_section layout_padding">
+    <!-- <div class="blog_section layout_padding">
       <div class="container">
         <h1 class="news_taital">Our Bolg</h1>
         <p class="news_text">
@@ -353,13 +393,14 @@
         </div>
         <div class="read_bt"><a href="#">Read More</a></div>
       </div>
-    </div>
+    </div> -->
     <!-- blog section end -->
     <!-- client section start -->
     <div class="client_section layout_padding">
       <div id="main_slider" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active">
+          {% for item in testomonial %}
+          <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
             <div class="container">
               <h1 class="client_taital">Testimonial</h1>
               <div class="client_section_2">
@@ -372,66 +413,22 @@
                   </div>
                 </div>
                 <div class="client_right">
-                  <h3 class="client_name">Jony Deno</h3>
+                  <h3 class="client_name">{{item.name}}</h3>
                   <p class="client_text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip
+                    {{ item.desc }}
                   </p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="carousel-item">
-            <div class="container">
-              <h1 class="client_taital">Testimonial</h1>
-              <div class="client_section_2">
-                <div class="client_left">
-                  <div>
-                    <img
-                      src="{% static 'images/client-img.png' %}"
-                      class="client_img"
-                    />
-                  </div>
-                </div>
-                <div class="client_right">
-                  <h3 class="client_name">Jony Deno</h3>
-                  <p class="client_text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="container">
-              <h1 class="client_taital">Testimonial</h1>
-              <div class="client_section_2">
-                <div class="client_left">
-                  <div>
-                    <img
-                      src="{% static 'images/client-img.png'%}"
-                      class="client_img"
-                    />
-                  </div>
-                </div>
-                <div class="client_right">
-                  <h3 class="client_name">Jony Deno</h3>
-                  <p class="client_text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+          {% endfor %}
+
+
+
         </div>
+        <!--
+          carousel-inner End
+        -->
         <a
           class="carousel-control-prev"
           href="#main_slider"
@@ -451,25 +448,36 @@
       </div>
     </div>
     <!-- client section end -->
-    <!-- newsletter section start -->
-    <div class="newsletter_section layout_padding">
-      <div class="container">
-        <div class="newsletter_main">
-          <h1 class="newsletter_taital">
-            Get<br />
-            Your free consuting
-          </h1>
-          <div class="get_quote_bt"><a href="#">Get A Quote</a></div>
-        </div>
-        <p class="dolor_text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip
-        </p>
+    <!-- Branding section start -->
+    <div class="row mt-2" id="imgSlider">
+      <div class="col-12 my-auto">
+        
+          <ul class="items list-unstyled">
+              {% for imgUrl in allCoursesImageUrl %}
+                <li class="item col-xs-4">
+                   <img class="img-response mr-1 ml-1" alt="{{ name }}" src="{{ imgUrl }}" style="height: 150px;width: 250px;"  /> 
+                  
+                </li>
+              {% endfor %}
+              <!-- <li class="item col-xs-4">
+                <img class="img-responsive" src="https://unsplash.it/446/242?image=680" alt="">
+              </li> -->
+              <!-- <li class="item col-xs-4">
+                  <img class="img-responsive" src="https://unsplash.it/446/242?image=674" alt="">
+              </li>
+              <li class="item col-xs-4"><img class="img-responsive" src="https://unsplash.it/446/242?image=660" alt="">
+              </li>
+              <li class="item col-xs-4"><img class="img-responsive" src="https://unsplash.it/446/242?image=656" alt="">
+              </li>
+              <li class="item col-xs-4"><img class="img-responsive" src="https://unsplash.it/446/242?image=646" alt="">
+              </li>
+              <li class="item col-xs-4"><img class="img-responsive" src="https://unsplash.it/446/242?image=633" alt="">
+              </li> -->
+          </ul>
+      
       </div>
-    </div>
-    <!-- newsletter section end -->
+  </div>
+    <!-- Branding section end -->
 
     <!-- contact section start -->
     <div class="contact_section layout_padding">
@@ -482,9 +490,16 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="map_main">
-              <img src="{% static 'images/map-img.png' %}" />
+          <div class="col-md-6 text-center">
+            <div class="map_main" style="padding-top: 0%;">
+              <!-- <img src="{% static 'images/map-img.png' %}" /> -->
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.4042376976386!2d73.84556951524843!3d18.510626087414824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c1fae1c80ca1%3A0xf7447c0a57821ee3!2sFirstBit%20Solutions!5e0!3m2!1sen!2sin!4v1583993498448!5m2!1sen!2sin" 
+                width="800" 
+                height="485" 
+                frameborder="0" style="border:0;" 
+                allowfullscreen="" aria-hidden="false" tabindex="0">
+              </iframe>
+            
             </div>
           </div>
         </div>
@@ -505,18 +520,18 @@
           <div class="row">
             <div class="col-lg-3 margin_top">
               <div class="call_text">
-                <a href="#"
+                <a 
                   ><img src="{% static 'images/call-icon1.png'%}" /><span
                     class="padding_left_15"
-                    >Call Now +01 9876543210</span
+                    >Call Now {{contactNumber}}</span
                   ></a
                 >
               </div>
               <div class="call_text">
-                <a href="#"
+                <a href="mailto:{{emailId}}"
                   ><img src="{% static 'images/mail-icon1.png'%}" /><span
                     class="padding_left_15"
-                    >demo@gmail.com</span
+                    >{{emailId}}</span
                   ></a
                 >
               </div>
@@ -548,7 +563,7 @@
               <div class="information_main">
                 <div class="footer_logo">
                   <a href="index.html"
-                    ><img src="{% static 'images/footer-logo.png'%}"
+                    ><img src="{% static 'images/logo-1.png'%}"
                   /></a>
                 </div>
               </div>
@@ -569,15 +584,28 @@
     <!-- copyright section end -->
     <!-- Javascript files-->
     <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/jquery-3.0.0.min.js' %}"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'js/jquery-3.0.0.min.js' %}"></script>
+    
     <script src="{% static 'js/plugin.js' %}"></script>
     <!-- sidebar -->
     <script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
     <script src="{% static 'js/custom.js' %}"></script>
     <!-- javascript -->
     <script src="{% static 'js/owl.carousel.js' %}"></script>
+    <script src="{% static 'js/scrollMove.js' %}"></script>
+    
     <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    
+    <script>
+
+
+      $(document).ready(function(){
+        // scrollMove('.items',60 ,1 );
+        $("img").on('load', function() { console.log("image loaded correctly"); scrollMove('.items',60 ,1 );})
+        
+      });
+    </script>
   </body>
 </html>
