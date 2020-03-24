@@ -506,6 +506,51 @@
       </div>
     </div>
     <!-- contact section end -->
+
+    <div class="row" style="width: 100%;">
+          <!-- Achievement Grid Start -->
+    <section class="achievement-grid" style="width: 100%;">
+      <div class="container p-5 text-center ">
+          <h2 class="text-white">We Have Something To Be Proud Of</h2>
+          <span class="subtitle">Last Year, We Have Achieved</span>
+          <p class="design"> </p>
+      </div>
+  
+  
+      <div class="row justify-content-around" id="achRow">
+  
+          <div class="list-item animated fadeInUp">
+              <i class="fa fa-globe icon"></i>
+              <span class="percent" id='globe' style="width: 15%;"></span>
+              <p class="line one"></p>
+              <p class="info one">Openings Received</p>
+          </div>
+          <div class="list-item animated fadeInUp">
+              <i class="fa fa-trophy icon"></i>
+              <span class="percent" id="trophy" style="width: 15%;"></span>
+              <p class="line two"></p>
+              <p class="info two">Campus Drives Conducted</p>
+          </div>
+          <div class="list-item animated fadeInUp">
+              <i class="fa fa-edit icon"></i>
+              <span class="percent" id="edit" style="width: 15%;"></span>
+              <p class="line three"></p>
+              <p class="info three">Students Placed</p>
+          </div>
+          <div class="list-item animated fadeInUp">
+              <i class="fa fa-pencil icon"></i>
+              <span class="percent" id="pencil" style="width: 15%;"></span>
+              <p class="line four"></p>
+              <p class="info four">Students Certified</p>
+          </div>
+      </div>
+  </section>
+  
+    <!-- Achievement Grid End -->
+    </div>
+
+
+
     <!-- footer section start -->
     <div class="footer_section layout_padding">
       <div class="container">
@@ -600,11 +645,27 @@
     
     <script>
 
-
+   function animateValue(id, start, end, duration) {
+      let range = end - start;
+      let current = start;
+      let increment = end > start ? 1 : -1;
+      let stepTime = Math.abs(Math.floor(duration / range));
+      let obj = document.getElementById(id);
+      let timer = setInterval(function () {
+        current += increment;
+        obj.innerHTML = `<p class="h3">${current}</p>`;
+        if (current == end) {
+          clearInterval(timer);
+        }
+      }, stepTime);
+    }
       $(document).ready(function(){
         // scrollMove('.items',60 ,1 );
         $("img").on('load', function() { console.log("image loaded correctly"); scrollMove('.items',60 ,1 );})
-        
+        animateValue('globe', 0, 1825, 1);
+        animateValue('trophy', 0, 780, 2);
+        animateValue('edit', 0, 2800, 1);
+        animateValue('pencil', 0, 3585, 1);
       });
     </script>
   </body>

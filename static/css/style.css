@@ -1060,3 +1060,102 @@ button {
 .gMap {
   position: relative; height: 100%; width: 100%;
 }
+
+
+
+
+
+
+
+
+/* Achievment Grid CSS Start */
+
+#achRow {
+  margin: 1em 10em;
+  padding-bottom: 5em;
+  text-align: center;
+}
+.achievement-grid {
+  background-color: #2d3e50;
+  color: white;
+ 
+}
+.subtitle {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 2em;
+}
+.design {
+  position: absolute;
+  left: 49%;
+  padding-top: 1em;
+  margin-top: 1.2em;
+  width: 1em;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  background-color: #fff;
+}
+ul {
+  list-style: none;
+}
+li {
+  display: inline-block;
+  padding: 1em 2em;
+  width: 25%;
+}
+.fa-globe {
+  color: #f6c640;
+}
+.fa-trophy {
+  color: #e84c3d;
+}
+.fa-edit {
+  color: #3b99d7;
+}
+.fa-pencil {
+  color: #92d438;
+}
+.icon {
+  font-size: 40px;
+  padding: 0.2em;
+  margin: 0.2em;
+}
+.percent {
+  font-size: 38px;
+  font-weight: bold;
+}
+.list-item {
+  padding: 2em;
+}
+.line {
+  content: '';
+  border-top: 1px solid gray;
+  width: 3em;
+  margin: 1em 0;
+  position: absolute;
+}
+.info {
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 2em;
+  position: absolute;
+  width: max-content;
+}
+
+@media (max-width: 780px) {
+  .row {
+    text-align: center;
+ }
+  .info {
+    font-weight: bold;
+    left: 5%;
+ }
+  .info.two {
+    left: -22%;
+ }
+  .line {
+    font-weight: bold;
+    left: 36%;
+ }
+}
+
+/* Achievement Grid CSS End */
